@@ -1,17 +1,45 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    Hi {{ fullName }} <br />
+    Number of articles: {{ articleCount }} <br />
+
+    <button @click="addArticle">Add Article</button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      articleCount: 0,
+      person: {
+        firstName: 'John',
+        lastName: 'Citizen',
+      },
+    };
+  },
+
+  computed: {
+    fullName() {
+      return `${this.person.firstName} ${this.person.lastName}`;
+    },
+  },
+
+  methods: {
+    addArticle() {
+      this.articleCount++;
+    },
+  },
+
+  watch: {
+    articleCount(newArticleCount, oldArticleCount) {
+      if (newArticleCount !== oldArticleCount) {
+        console.log('New article added');
+      }
+    },
+  },
+};
 </script>
 
 <style>
