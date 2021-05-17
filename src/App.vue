@@ -14,7 +14,7 @@ export default {
     return {
       articleCount: 0,
       person: {
-        firstName: 'John',
+        firstName: 'John1',
         lastName: 'Citizen',
       },
     };
